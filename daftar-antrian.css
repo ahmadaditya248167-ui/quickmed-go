@@ -1,0 +1,460 @@
+/* =============================================
+   RESET & BASE
+   ============================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  background: #e8f4fb;
+}
+
+/* =============================================
+   SIDEBAR
+   ============================================= */
+.sidebar {
+  width: 270px;
+  min-width: 270px;
+  background: linear-gradient(180deg, #c8eefb 0%, #d6f0fc 40%, #b0d8f0 100%);
+  display: flex;
+  flex-direction: column;
+  padding: 28px 20px 20px 20px;
+  box-shadow: 3px 0 12px rgba(0,0,0,0.08);
+  position: relative;
+  z-index: 10;
+}
+
+/* Logo */
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.logo-icon {
+  position: relative;
+  width: 36px;
+  height: 36px;
+}
+
+.logo-icon .fa-heart-pulse {
+  color: #e84545;
+  font-size: 13px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.logo-icon .fa-hands {
+  color: #29b6e8;
+  font-size: 22px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.logo-klinik {
+  font-size: 13px;
+  color: #555;
+  font-weight: 500;
+}
+
+.logo-quickmed {
+  font-size: 17px;
+  font-weight: 700;
+  color: #222;
+}
+
+/* Navigation */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 20px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #fff;
+  background: #22c1d0;
+  transition: background 0.2s, transform 0.1s;
+  cursor: pointer;
+  border: none;
+}
+
+.nav-item:hover {
+  background: #1aabb9;
+  transform: translateX(3px);
+}
+
+.nav-item.active {
+  background: #2ecc40;
+}
+
+.nav-item.active:hover {
+  background: #27b538;
+}
+
+.nav-item i {
+  font-size: 18px;
+  width: 22px;
+  text-align: center;
+}
+
+/* Sidebar Info */
+.sidebar-info {
+  margin-top: auto;
+  background: #2a9fc9;
+  border-radius: 12px;
+  padding: 14px 16px;
+  color: #fff;
+}
+
+.info-title {
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+.info-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 6px;
+  font-size: 10.5px;
+  line-height: 1.4;
+}
+
+.info-label {
+  min-width: 60px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.info-value {
+  color: #d8f0fa;
+}
+
+.info-value a {
+  color: #d8f0fa;
+  text-decoration: underline;
+}
+
+/* =============================================
+   MAIN CONTENT
+   ============================================= */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Top Header */
+.top-header {
+  background: linear-gradient(90deg, #b8e8f8 0%, #d0f0fd 50%, #c0eaf8 100%);
+  padding: 18px 40px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 80px;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.header-icon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #22c1d0, #1a9bb5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 12px rgba(34,193,208,0.4);
+}
+
+.header-icon i {
+  color: #fff;
+  font-size: 28px;
+}
+
+.header-title {
+  font-size: 38px;
+  font-weight: 700;
+  color: #2a9fc9;
+  letter-spacing: 1px;
+}
+
+/* Hex overlay pattern */
+.hex-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(34,193,208,0.12) 1px, transparent 1px);
+  background-size: 24px 24px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* =============================================
+   HERO AREA
+   ============================================= */
+.hero-area {
+  flex: 1;
+  position: relative;
+  overflow-y: auto;
+  background:
+    linear-gradient(rgba(220,240,250,0.7), rgba(200,230,248,0.7)),
+    url('https://cloudcare.id/wp-content/uploads/2024/02/46247-1080x675.jpg') center/cover no-repeat;
+}
+
+/* Medical doodle SVG background overlay */
+.hero-area::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' opacity='0.07'%3E%3Ctext x='30' y='80' font-size='48' fill='%2322c1d0'%3E%2B%3C/text%3E%3Ctext x='180' y='50' font-size='32' fill='%2322c1d0'%3E%E2%9D%A4%3C/text%3E%3Ccircle cx='320' cy='60' r='28' stroke='%2322c1d0' stroke-width='3' fill='none'/%3E%3Ctext x='10' y='200' font-size='40' fill='%2322c1d0'%3E%E2%8A%95%3C/text%3E%3Ctext x='350' y='180' font-size='36' fill='%2322c1d0'%3E%2B%3C/text%3E%3Ccircle cx='80' cy='320' r='22' stroke='%2322c1d0' stroke-width='3' fill='none'/%3E%3Ctext x='200' y='350' font-size='44' fill='%2322c1d0'%3E%2B%3C/text%3E%3Ctext x='340' y='370' font-size='30' fill='%2322c1d0'%3E%E2%9D%A4%3C/text%3E%3C/svg%3E");
+  background-size: 400px 400px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* =============================================
+   PAGE TITLE
+   ============================================= */
+.page-title-wrap {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 28px 20px 10px;
+}
+
+.page-title {
+  display: inline-block;
+  font-size: 28px;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(90deg, #22c1d0, #1a9bb5);
+  padding: 8px 40px;
+  border-radius: 10px;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 18px rgba(34,193,208,0.3);
+}
+
+/* =============================================
+   CARDS GRID
+   ============================================= */
+.cards-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  padding: 22px 36px 36px;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Center last row if odd number */
+.cards-grid .queue-card:nth-last-child(1):nth-child(3n+1) {
+  grid-column: 2;
+}
+
+.cards-grid .queue-card:nth-last-child(2):nth-child(3n+1) {
+  grid-column: 1;
+}
+
+/* =============================================
+   QUEUE CARD
+   ============================================= */
+.queue-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 20px 22px 18px;
+  box-shadow: 0 6px 24px rgba(34,193,208,0.15);
+  border: 1.5px solid rgba(34,193,208,0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: cardIn 0.5s ease both;
+}
+
+.queue-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(34,193,208,0.25);
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.queue-card:nth-child(1) { animation-delay: 0.05s; }
+.queue-card:nth-child(2) { animation-delay: 0.12s; }
+.queue-card:nth-child(3) { animation-delay: 0.19s; }
+.queue-card:nth-child(4) { animation-delay: 0.26s; }
+.queue-card:nth-child(5) { animation-delay: 0.33s; }
+
+/* Card Logo */
+.card-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  border-bottom: 1.5px solid #e0f4fb;
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+.card-logo-icon {
+  position: relative;
+  width: 28px;
+  height: 28px;
+}
+
+.card-logo-icon .fa-heart-pulse {
+  color: #e84545;
+  font-size: 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.card-logo-icon .fa-hands {
+  color: #29b6e8;
+  font-size: 17px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.card-logo-text {
+  font-size: 12.5px;
+  line-height: 1.15;
+}
+
+.card-logo-text .kl {
+  color: #555;
+  font-weight: 500;
+}
+
+.card-logo-text .qm {
+  font-weight: 800;
+  color: #222;
+  font-size: 13px;
+}
+
+.card-logo-text .qm span {
+  color: #29b6e8;
+}
+
+/* Nomor Antrian label */
+.card-label {
+  background: #22c1d0;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 28px;
+  border-radius: 8px;
+  letter-spacing: 0.5px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number */
+.card-number {
+  font-size: 46px;
+  font-weight: 800;
+  color: #1a7fa8;
+  letter-spacing: 2px;
+  line-height: 1;
+  padding: 6px 0;
+  font-family: 'Courier New', monospace;
+}
+
+/* Divider wave */
+.card-divider {
+  width: 100%;
+  height: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-divider svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Poli */
+.card-poli {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #333;
+  padding-top: 2px;
+}
+
+.card-poli-icon {
+  font-size: 22px;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 16px;
+    gap: 14px;
+  }
+
+  .header-title {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QuickMed Go - Ambil Antrian</title>
+  <link rel="stylesheet" href="style1.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <!-- Logo -->
+    <div class="sidebar-logo">
+      <div class="logo-icon">
+        <i class="fa-solid fa-heart-pulse"></i>
+        <i class="fa-solid fa-hands"></i>
+      </div>
+      <div class="logo-text">
+        <span class="logo-klinik">klinik</span>
+        <span class="logo-quickmed">QuickMed</span>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="sidebar-nav">
+      <a href="index.html" class="nav-item active">
+        <i class="fa-solid fa-users"></i>
+        <span>Antrian</span>
+      </a>
+      <a href="daftar-antrian.html" class="nav-item">
+        <i class="fa-solid fa-list"></i>
+        <span>Daftar Antrian</span>
+      </a>
+      <a href="kartu-antrian.html" class="nav-item">
+        <i class="fa-solid fa-id-card"></i>
+        <span>Kartu Antrian</span>
+      </a>
+    </nav>
+
+    <!-- Info Klinik -->
+    <div class="sidebar-info">
+      <p class="info-title">KLINIK QUICKMED</p>
+      <div class="info-row">
+        <span class="info-label">Alamat</span>
+        <span class="info-value">Jalan Cik Di Tiro 30, Kel. Terban, Kec. Gondokusunan, Kota Yogyakarta, Prop. Daerah Istimewa Yogyakarta</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Telepon</span>
+        <span class="info-value">(0274) 514014, 514845, 563333 (hunting)</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Faksimile</span>
+        <span class="info-value">(0274) 564583</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Email</span>
+        <span class="info-value"><a href="mailto:admin@quickmed.or.id">admin@quickmed.or.id</a></span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+    <!-- Top Header -->
+    <header class="top-header">
+      <div class="header-logo">
+        <div class="header-icon">
+          <i class="fa-solid fa-circle-plus"></i>
+        </div>
+        <span class="header-title">QuickMed Go</span>
+      </div>
+      <!-- Hex pattern overlay -->
+      <div class="hex-overlay"></div>
+    </header>
+
+    <!-- Hero / Background Area -->
+    <div class="hero-area">
+      <!-- Background image layer -->
+      <div class="hero-bg"></div>
+
+      <!-- Form Card -->
+      <div class="form-card">
+        <h2 class="form-title">Ambil Antrian</h2>
+        <p class="form-subtitle">Silakan isi data untuk mengambil nomor antrian</p>
+
+        <div class="form-group">
+          <label class="form-label">Nomor Telepon</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-phone input-icon"></i>
+            <input type="tel" id="inputTelepon" class="form-input" placeholder="08xxxxxxxxxx" maxlength="13" inputmode="numeric" pattern="[0-9]*" onkeypress="return /[0-9]/.test(event.key)" oninput="this.value=this.value.replace(/[^0-9]/g,'')" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Poli</label>
+          <div class="input-wrapper select-wrapper">
+            <i class="fa-solid fa-bed-pulse input-icon"></i>
+            <select id="inputPoli" class="form-select">
+              <option value="" disabled selected>Pilih poli</option>
+              <option value="Poli Umum">Poli Umum</option>
+              <option value="Poli Gigi">Poli Gigi</option>
+              <option value="Poli Anak">Poli Anak</option>
+              <option value="Poli Kandungan">Poli Kandungan</option>
+              <option value="Poli Kulit & Kelamin">Poli Kulit &amp; Kelamin</option>
+            </select>
+            <i class="fa-solid fa-chevron-down select-arrow"></i>
+          </div>
+        </div>
+
+        <button class="btn-ambil" onclick="ambilAntrian()">AMBIL ANTRIAN</button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Poli → kode huruf antrian
+    const poliKode = {
+      'Poli Umum'           : 'A',
+      'Poli Anak'           : 'B',
+      'Poli Gigi'           : 'C',
+      'Poli Kandungan'      : 'D',
+      'Poli Kulit & Kelamin': 'E'
+    };
+
+    // Nomor antrian per poli disimpan di sessionStorage
+    function getNomorAntrian(poli) {
+      const key = 'antrian_' + poli;
+      let current = parseInt(sessionStorage.getItem(key) || '0');
+      current += 1;
+      sessionStorage.setItem(key, current);
+      return current;
+    }
+
+    function ambilAntrian() {
+      const telepon = document.getElementById('inputTelepon').value.trim();
+      const poli    = document.getElementById('inputPoli').value;
+
+      if (!telepon) {
+        alert('Harap isi nomor telepon terlebih dahulu.');
+        return;
+      }
+      if (!poli) {
+        alert('Harap pilih poli terlebih dahulu.');
+        return;
+      }
+
+      const huruf  = poliKode[poli];
+      const nomor  = getNomorAntrian(poli);
+      const kode   = huruf + '-' + String(nomor).padStart(3, '0');
+
+      // Simpan data ke sessionStorage untuk dibaca di kartu-antrian.html
+      sessionStorage.setItem('kartu_telepon', telepon);
+      sessionStorage.setItem('kartu_poli',    poli);
+      sessionStorage.setItem('kartu_nomor',   kode);
+
+      // Pindah ke halaman Kartu Antrian
+      window.location.href = 'kartu-antrian.html';
+    }
+  </script>
+
+</body>
+</html>
