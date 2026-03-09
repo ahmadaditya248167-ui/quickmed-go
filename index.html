@@ -12,7 +12,6 @@
 
   <!-- SIDEBAR -->
   <aside class="sidebar">
-    <!-- Logo -->
     <div class="sidebar-logo">
       <div class="logo-icon">
         <i class="fa-solid fa-heart-pulse"></i>
@@ -24,7 +23,6 @@
       </div>
     </div>
 
-    <!-- Navigation -->
     <nav class="sidebar-nav">
       <a href="index.html" class="nav-item active">
         <i class="fa-solid fa-users"></i>
@@ -40,7 +38,6 @@
       </a>
     </nav>
 
-    <!-- Info Klinik -->
     <div class="sidebar-info">
       <p class="info-title">KLINIK QUICKMED</p>
       <div class="info-row">
@@ -64,7 +61,6 @@
 
   <!-- MAIN CONTENT -->
   <main class="main-content">
-    <!-- Top Header -->
     <header class="top-header">
       <div class="header-logo">
         <div class="header-icon">
@@ -72,16 +68,12 @@
         </div>
         <span class="header-title">QuickMed Go</span>
       </div>
-      <!-- Hex pattern overlay -->
       <div class="hex-overlay"></div>
     </header>
 
-    <!-- Hero / Background Area -->
     <div class="hero-area">
-      <!-- Background image layer -->
       <div class="hero-bg"></div>
 
-      <!-- Form Card -->
       <div class="form-card">
         <h2 class="form-title">Ambil Antrian</h2>
         <p class="form-subtitle">Silakan isi data untuk mengambil nomor antrian</p>
@@ -90,7 +82,17 @@
           <label class="form-label">Nomor Telepon</label>
           <div class="input-wrapper">
             <i class="fa-solid fa-phone input-icon"></i>
-            <input type="tel" id="inputTelepon" class="form-input" placeholder="08xxxxxxxxxx" maxlength="13" inputmode="numeric" pattern="[0-9]*" onkeypress="return /[0-9]/.test(event.key)" oninput="this.value=this.value.replace(/[^0-9]/g,'')" />
+            <input
+              type="tel"
+              id="inputTelepon"
+              class="form-input"
+              placeholder="08xxxxxxxxxx"
+              maxlength="13"
+              inputmode="numeric"
+              pattern="[0-9]*"
+              onkeypress="return /[0-9]/.test(event.key)"
+              oninput="this.value=this.value.replace(/[^0-9]/g,'')"
+            />
           </div>
         </div>
 
@@ -100,11 +102,11 @@
             <i class="fa-solid fa-bed-pulse input-icon"></i>
             <select id="inputPoli" class="form-select">
               <option value="" disabled selected>Pilih poli</option>
-              <option value="Poli Umum">Poli Umum</option>
-              <option value="Poli Gigi">Poli Gigi</option>
-              <option value="Poli Anak">Poli Anak</option>
-              <option value="Poli Kandungan">Poli Kandungan</option>
-              <option value="Poli Kulit & Kelamin">Poli Kulit &amp; Kelamin</option>
+              <option value="Poli Umum">A - Poli Umum</option>
+              <option value="Poli Anak">B - Poli Anak</option>
+              <option value="Poli Gigi">C - Poli Gigi</option>
+              <option value="Poli Kandungan">D - Poli Kandungan</option>
+              <option value="Poli Kulit & Kelamin">E - Poli Kulit & Kelamin</option>
             </select>
             <i class="fa-solid fa-chevron-down select-arrow"></i>
           </div>
@@ -116,7 +118,7 @@
   </main>
 
   <script>
-    // Poli → kode huruf antrian
+    // Poli ke kode huruf antrian
     const poliKode = {
       'Poli Umum'           : 'A',
       'Poli Anak'           : 'B',
@@ -125,7 +127,7 @@
       'Poli Kulit & Kelamin': 'E'
     };
 
-    // Nomor antrian per poli disimpan di sessionStorage
+    // Ambil dan tambah nomor antrian per poli dari sessionStorage
     function getNomorAntrian(poli) {
       const key = 'antrian_' + poli;
       let current = parseInt(sessionStorage.getItem(key) || '0');
@@ -147,11 +149,11 @@
         return;
       }
 
-      const huruf  = poliKode[poli];
-      const nomor  = getNomorAntrian(poli);
-      const kode   = huruf + '-' + String(nomor).padStart(3, '0');
+      const huruf = poliKode[poli];
+      const nomor = getNomorAntrian(poli);
+      const kode  = huruf + '-' + String(nomor).padStart(3, '0');
 
-      // Simpan data ke sessionStorage untuk dibaca di kartu-antrian.html
+      // Simpan ke sessionStorage untuk dibaca di kartu-antrian.html
       sessionStorage.setItem('kartu_telepon', telepon);
       sessionStorage.setItem('kartu_poli',    poli);
       sessionStorage.setItem('kartu_nomor',   kode);

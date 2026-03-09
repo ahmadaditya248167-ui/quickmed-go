@@ -27,7 +27,7 @@
     <a href="index.html" class="nav-item">
       <i class="fa-solid fa-users"></i> Antrian
     </a>
-    <a href="#" class="nav-item active">
+    <a href="daftar-antrian.html" class="nav-item active">
       <i class="fa-solid fa-bars"></i> Daftar Antrian
     </a>
     <a href="kartu-antrian.html" class="nav-item">
@@ -58,8 +58,6 @@
 
 <!-- MAIN -->
 <div class="main-content">
-
-  <!-- Header -->
   <header class="top-header">
     <div class="hex-overlay"></div>
     <div class="header-logo">
@@ -68,9 +66,7 @@
     </div>
   </header>
 
-  <!-- Hero / Content Area -->
   <div class="hero-area">
-
     <div class="page-title-wrap">
       <h1 class="page-title">Daftar Nomor Antrian</h1>
     </div>
@@ -90,15 +86,13 @@
           </div>
         </div>
         <div class="card-label">Nomor Antrian</div>
-        <div class="card-number">A-001</div>
+        <div class="card-number" id="nomorA">A-000</div>
         <div class="card-divider">
           <svg viewBox="0 0 200 24" preserveAspectRatio="none">
             <path d="M0,12 C40,0 80,24 120,12 C160,0 180,20 200,12 L200,24 L0,24 Z" fill="#b8e8f5"/>
           </svg>
         </div>
-        <div class="card-poli">
-          <span class="card-poli-icon">🩺</span> Poli Umum
-        </div>
+        <div class="card-poli"><span class="card-poli-icon">🩺</span> Poli Umum</div>
       </div>
 
       <!-- Card B - Poli Anak -->
@@ -114,15 +108,13 @@
           </div>
         </div>
         <div class="card-label">Nomor Antrian</div>
-        <div class="card-number">B-021</div>
+        <div class="card-number" id="nomorB">B-000</div>
         <div class="card-divider">
           <svg viewBox="0 0 200 24" preserveAspectRatio="none">
             <path d="M0,12 C40,0 80,24 120,12 C160,0 180,20 200,12 L200,24 L0,24 Z" fill="#b8e8f5"/>
           </svg>
         </div>
-        <div class="card-poli">
-          <span class="card-poli-icon">🧸</span> Poli Anak
-        </div>
+        <div class="card-poli"><span class="card-poli-icon">🧸</span> Poli Anak</div>
       </div>
 
       <!-- Card C - Poli Gigi -->
@@ -138,15 +130,13 @@
           </div>
         </div>
         <div class="card-label">Nomor Antrian</div>
-        <div class="card-number">C-041</div>
+        <div class="card-number" id="nomorC">C-000</div>
         <div class="card-divider">
           <svg viewBox="0 0 200 24" preserveAspectRatio="none">
             <path d="M0,12 C40,0 80,24 120,12 C160,0 180,20 200,12 L200,24 L0,24 Z" fill="#b8e8f5"/>
           </svg>
         </div>
-        <div class="card-poli">
-          <span class="card-poli-icon">🦷</span> Poli Gigi
-        </div>
+        <div class="card-poli"><span class="card-poli-icon">🦷</span> Poli Gigi</div>
       </div>
 
       <!-- Card D - Poli Kandungan -->
@@ -162,15 +152,13 @@
           </div>
         </div>
         <div class="card-label">Nomor Antrian</div>
-        <div class="card-number">D-061</div>
+        <div class="card-number" id="nomorD">D-000</div>
         <div class="card-divider">
           <svg viewBox="0 0 200 24" preserveAspectRatio="none">
             <path d="M0,12 C40,0 80,24 120,12 C160,0 180,20 200,12 L200,24 L0,24 Z" fill="#b8e8f5"/>
           </svg>
         </div>
-        <div class="card-poli">
-          <span class="card-poli-icon">🤰</span> Poli Kandungan
-        </div>
+        <div class="card-poli"><span class="card-poli-icon">🤰</span> Poli Kandungan</div>
       </div>
 
       <!-- Card E - Poli Kulit & Kelamin -->
@@ -186,20 +174,37 @@
           </div>
         </div>
         <div class="card-label">Nomor Antrian</div>
-        <div class="card-number">E-081</div>
+        <div class="card-number" id="nomorE">E-000</div>
         <div class="card-divider">
           <svg viewBox="0 0 200 24" preserveAspectRatio="none">
             <path d="M0,12 C40,0 80,24 120,12 C160,0 180,20 200,12 L200,24 L0,24 Z" fill="#b8e8f5"/>
           </svg>
         </div>
-        <div class="card-poli">
-          <span class="card-poli-icon">🔬</span> Poli Kulit &amp; Kelamin
-        </div>
+        <div class="card-poli"><span class="card-poli-icon">🔬</span> Poli Kulit &amp; Kelamin</div>
       </div>
 
     </div>
   </div>
 </div>
+
+<script>
+  // Mapping poli ke huruf dan id elemen
+  const poliMap = [
+    { poli: 'Poli Umum',            huruf: 'A', id: 'nomorA' },
+    { poli: 'Poli Anak',            huruf: 'B', id: 'nomorB' },
+    { poli: 'Poli Gigi',            huruf: 'C', id: 'nomorC' },
+    { poli: 'Poli Kandungan',       huruf: 'D', id: 'nomorD' },
+    { poli: 'Poli Kulit & Kelamin', huruf: 'E', id: 'nomorE' },
+  ];
+
+  // Tampilkan nomor antrian terakhir dari sessionStorage
+  poliMap.forEach(function(item) {
+    const key    = 'antrian_' + item.poli;
+    const nomor  = parseInt(sessionStorage.getItem(key) || '0');
+    const kode   = item.huruf + '-' + String(nomor).padStart(3, '0');
+    document.getElementById(item.id).textContent = kode;
+  });
+</script>
 
 </body>
 </html>

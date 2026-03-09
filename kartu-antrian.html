@@ -30,7 +30,7 @@
     <a href="daftar-antrian.html" class="nav-item">
       <i class="fa-solid fa-bars"></i> Daftar Antrian
     </a>
-    <a href="#" class="nav-item active">
+    <a href="kartu-antrian.html" class="nav-item active">
       <i class="fa-solid fa-id-card-clip"></i> Kartu Antrian
     </a>
   </nav>
@@ -91,12 +91,12 @@
         <!-- Phone Row -->
         <div class="ticket-phone">
           <span class="ticket-phone-label">Nomor Telepon :</span>
-          <span class="ticket-phone-number">085714461727</span>
+          <span class="ticket-phone-number" id="displayTelepon">-</span>
         </div>
 
         <!-- Queue Number -->
         <div class="ticket-number-box">
-          <div class="ticket-number">A-001</div>
+          <div class="ticket-number" id="displayNomor">-</div>
         </div>
 
         <!-- Wave + Poli -->
@@ -106,7 +106,7 @@
           </svg>
         </div>
 
-        <div class="ticket-poli">Poli Gigi</div>
+        <div class="ticket-poli" id="displayPoli">-</div>
 
         <!-- Bottom Wave -->
         <div class="ticket-bottom-wave">
@@ -127,6 +127,17 @@
     </div>
   </div>
 </div>
+
+<script>
+  // Baca data dari sessionStorage yang disimpan oleh index.html
+  const telepon = sessionStorage.getItem('kartu_telepon') || '-';
+  const nomor   = sessionStorage.getItem('kartu_nomor')   || '-';
+  const poli    = sessionStorage.getItem('kartu_poli')    || '-';
+
+  document.getElementById('displayTelepon').textContent = telepon;
+  document.getElementById('displayNomor').textContent   = nomor;
+  document.getElementById('displayPoli').textContent    = poli;
+</script>
 
 </body>
 </html>
