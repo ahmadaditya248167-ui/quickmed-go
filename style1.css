@@ -198,12 +198,10 @@ body {
 .header-icon {
   width: 56px;
   height: 56px;
-  background: linear-gradient(135deg, #22c1d0, #1a9bb5);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 3px 12px rgba(34,193,208,0.4);
 }
 
 .header-icon .fa-circle-plus {
