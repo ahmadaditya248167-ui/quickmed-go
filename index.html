@@ -13,10 +13,9 @@
   <!-- SIDEBAR -->
   <aside class="sidebar">
     <div class="sidebar-logo">
-  <img src="9121dd35-7bd9-4e90-8689-2466e4dd6735-removebg-preview.png" 
-       alt="Logo Klinik QuickMed" 
-       style="height: 60px; width: auto; object-fit: contain;" />
-</div>
+      <img src="9121dd35-7bd9-4e90-8689-2466e4dd6735-removebg-preview.png"
+           alt="Logo Klinik QuickMed"
+           style="height: 60px; width: auto; object-fit: contain;" />
     </div>
 
     <nav class="sidebar-nav">
@@ -60,10 +59,10 @@
     <header class="top-header">
       <div class="header-logo">
         <div class="header-icon" style="background:transparent; box-shadow:none;">
-  <img src="logo (1).png" 
-       alt="Logo QuickMed Go" 
-       style="height: 56px; width: auto; object-fit: contain;" />
-</div>
+          <img src="logo (1).png"
+               alt="Logo QuickMed Go"
+               style="height: 56px; width: auto; object-fit: contain;" />
+        </div>
         <span class="header-title">QuickMed Go</span>
       </div>
       <div class="hex-overlay"></div>
@@ -84,12 +83,9 @@
               type="tel"
               id="inputTelepon"
               class="form-input"
-              placeholder="08xxxxxxxxxx"
-              maxlength="13"
-              inputmode="numeric"
-              pattern="[0-9]*"
-              onkeypress="return /[0-9]/.test(event.key)"
-              oninput="this.value=this.value.replace(/[^0-9]/g,'')"
+              placeholder="08xx atau +62xx"
+              maxlength="15"
+              oninput="filterTelepon(this)"
             />
           </div>
         </div>
@@ -112,7 +108,6 @@
 
         <button class="btn-ambil" onclick="ambilAntrian()">AMBIL ANTRIAN</button>
 
-        <!-- Form hidden untuk submit ke PHP -->
         <form id="formAntrian" action="ambil-antrian.php" method="POST" style="display:none;">
           <input type="hidden" name="nomor_telepon" id="hiddenTelepon" />
           <input type="hidden" name="poli" id="hiddenPoli" />
@@ -123,21 +118,43 @@
   </main>
 
   <script>
+    function filterTelepon(input) {
+      var val = input.value;
+      if (val.startsWith('+')) {
+        val = '+' + val.slice(1).replace(/[^0-9]/g, '');
+      } else {
+        val = val.replace(/[^0-9]/g, '');
+      }
+      input.value = val;
+    }
+
     function ambilAntrian() {
-      const telepon = document.getElementById('inputTelepon').value.trim();
-      const poli    = document.getElementById('inputPoli').value;
+      var telepon = document.getElementById('inputTelepon').value.trim();
+      var poli = document.getElementById('inputPoli').value;
 
       if (!telepon) {
         alert('Harap isi nomor telepon terlebih dahulu.');
         return;
       }
+
+      var formatValid = /^08/.test(telepon) || /^\+62/.test(telepon);
+      if (!formatValid) {
+        alert('Nomor telepon harus diawali dengan 08 atau +62.');
+        return;
+      }
+
+      if (telepon.length < 10) {
+        alert('Nomor telepon minimal 10 digit.');
+        return;
+      }
+
       if (!poli) {
         alert('Harap pilih poli terlebih dahulu.');
         return;
       }
 
       document.getElementById('hiddenTelepon').value = telepon;
-      document.getElementById('hiddenPoli').value    = poli;
+      document.getElementById('hiddenPoli').value = poli;
       document.getElementById('formAntrian').submit();
     }
   </script>
