@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kartu Antrian – QuickMed Go</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="kartu-antrian.css"/>
+</head>
+<body>
+
+<?php
+// Ambil data dari URL
+$telepon = htmlspecialchars($_GET['telepon'] ?? '-');
+$poli    = htmlspecialchars($_GET['poli']    ?? '-');
+$nomor   = htmlspecialchars($_GET['nomor']   ?? '-');
+?>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon">
+      <i class="fa-solid fa-heart-pulse"></i>
+      <i class="fa-solid fa-hands"></i>
+    </div>
+    <div class="logo-text">
+      <span class="logo-klinik">klinik</span>
+      <span class="logo-quickmed">QuickMed</span>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a href="index.html" class="nav-item">
+      <i class="fa-solid fa-users"></i> Antrian
+    </a>
+    <a href="daftar-antrian.php" class="nav-item">
+      <i class="fa-solid fa-bars"></i> Daftar Antrian
+    </a>
+    <a href="#" class="nav-item active">
+      <i class="fa-solid fa-id-card-clip"></i> Kartu Antrian
+    </a>
+  </nav>
+
+  <div class="sidebar-info">
+    <div class="info-title">KLINIK QUICKMED</div>
+    <div class="info-row">
+      <span class="info-label">Alamat</span>
+      <span class="info-value">Jalan Cik Di Tiro 30, Kel. Terban, Kec. Gondokusuman, Kota Yogyakarta, Prop. Daerah Istimewa Yogyakarta</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Telepon</span>
+      <span class="info-value">(0274) 514014, 514845, 563333 (hunting)</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Faksimile</span>
+      <span class="info-value">(0274) 564583</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Email</span>
+      <span class="info-value"><a href="mailto:admin@quickmed.or.id">admin@quickmed.or.id</a></span>
+    </div>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="main-content">
+  <header class="top-header">
+    <div class="hex-overlay"></div>
+    <div class="header-logo">
+      <div class="header-icon"><i class="fa-solid fa-circle-plus"></i></div>
+      <span class="header-title">QuickMed Go</span>
+    </div>
+  </header>
+
+  <div class="hero-area">
+    <div class="ticket-wrapper">
+      <div class="ticket-card">
+
+        <!-- Header Brand + Close -->
+        <div class="ticket-header">
+          <div class="ticket-brand">
+            <div class="ticket-brand-icon">
+              <i class="fa-solid fa-heart-pulse"></i>
+              <i class="fa-solid fa-hands"></i>
+            </div>
+            <span class="ticket-brand-text">Klinik Quick<span>Med</span></span>
+          </div>
+          <button class="btn-close" onclick="window.location.href='index.html'">X</button>
+        </div>
+
+        <!-- Nomor Telepon -->
+        <div class="ticket-phone">
+          <span class="ticket-phone-label">Nomor Telepon :</span>
+          <span class="ticket-phone-number"><?= $telepon ?></span>
+        </div>
+
+        <!-- Nomor Antrian -->
+        <div class="ticket-number-box">
+          <div class="ticket-number"><?= $nomor ?></div>
+        </div>
+
+        <!-- Wave + Poli -->
+        <div class="ticket-wave">
+          <svg viewBox="0 0 560 30" preserveAspectRatio="none">
+            <path d="M0,15 C80,0 160,30 280,15 C400,0 480,28 560,15 L560,30 L0,30 Z" fill="#b8e8f5"/>
+          </svg>
+        </div>
+
+        <div class="ticket-poli"><?= $poli ?></div>
+
+        <!-- Bottom Wave -->
+        <div class="ticket-bottom-wave">
+          <svg viewBox="0 0 560 28" preserveAspectRatio="none">
+            <path d="M0,14 C80,0 160,28 280,14 C400,0 480,26 560,14 L560,0 L0,0 Z" fill="rgba(255,255,255,0.5)"/>
+          </svg>
+        </div>
+
+      </div>
+
+      <!-- Tombol Ambil Antrian Baru -->
+      <div class="ticket-action">
+        <button class="btn-new-queue" onclick="window.location.href='index.html'">
+          AMBIL ANTRIAN BARU
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

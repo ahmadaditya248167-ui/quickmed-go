@@ -13,7 +13,14 @@
   <!-- SIDEBAR -->
   <aside class="sidebar">
     <div class="sidebar-logo">
-      <img src="9121dd35-7bd9-4e90-8689-2466e4dd6735-removebg-preview.png" alt="Logo QuickMed" style="height: 50px; width: auto;" />
+      <div class="logo-icon">
+        <i class="fa-solid fa-heart-pulse"></i>
+        <i class="fa-solid fa-hands"></i>
+      </div>
+      <div class="logo-text">
+        <span class="logo-klinik">klinik</span>
+        <span class="logo-quickmed">QuickMed</span>
+      </div>
     </div>
 
     <nav class="sidebar-nav">
@@ -21,11 +28,11 @@
         <i class="fa-solid fa-users"></i>
         <span>Antrian</span>
       </a>
-      <a href="daftar-antrian.html" class="nav-item">
+      <a href="daftar-antrian.php" class="nav-item">
         <i class="fa-solid fa-list"></i>
         <span>Daftar Antrian</span>
       </a>
-      <a href="kartu-antrian.html" class="nav-item">
+      <a href="kartu-antrian.php" class="nav-item">
         <i class="fa-solid fa-id-card"></i>
         <span>Kartu Antrian</span>
       </a>
@@ -35,7 +42,7 @@
       <p class="info-title">KLINIK QUICKMED</p>
       <div class="info-row">
         <span class="info-label">Alamat</span>
-        <span class="info-value">Jalan Cik Di Tiro 30, Kel. Terban, Kec. Gondokusuman, Kota Yogyakarta, Prov. Daerah Istimewa Yogyakarta</span>
+        <span class="info-value">Jalan Cik Di Tiro 30, Kel. Terban, Kec. Gondokusunan, Kota Yogyakarta, Prop. Daerah Istimewa Yogyakarta</span>
       </div>
       <div class="info-row">
         <span class="info-label">Telepon</span>
@@ -57,8 +64,8 @@
     <header class="top-header">
       <div class="header-logo">
         <div class="header-icon">
-  <img src="logo (1).png" alt="Logo" style="width: 89px; height: 89px; object-fit: contain;" />
-</div>
+          <i class="fa-solid fa-circle-plus"></i>
+        </div>
         <span class="header-title">QuickMed Go</span>
       </div>
       <div class="hex-overlay"></div>
@@ -106,29 +113,18 @@
         </div>
 
         <button class="btn-ambil" onclick="ambilAntrian()">AMBIL ANTRIAN</button>
+
+        <!-- Form hidden untuk submit ke PHP -->
+        <form id="formAntrian" action="ambil-antrian.php" method="POST" style="display:none;">
+          <input type="hidden" name="nomor_telepon" id="hiddenTelepon" />
+          <input type="hidden" name="poli" id="hiddenPoli" />
+        </form>
+
       </div>
     </div>
   </main>
 
   <script>
-    // Poli ke kode huruf antrian
-    const poliKode = {
-      'Poli Umum'           : 'A',
-      'Poli Anak'           : 'B',
-      'Poli Gigi'           : 'C',
-      'Poli Kandungan'      : 'D',
-      'Poli Kulit & Kelamin': 'E'
-    };
-
-    // Ambil dan tambah nomor antrian per poli dari sessionStorage
-    function getNomorAntrian(poli) {
-      const key = 'antrian_' + poli;
-      let current = parseInt(sessionStorage.getItem(key) || '0');
-      current += 1;
-      sessionStorage.setItem(key, current);
-      return current;
-    }
-
     function ambilAntrian() {
       const telepon = document.getElementById('inputTelepon').value.trim();
       const poli    = document.getElementById('inputPoli').value;
@@ -142,17 +138,9 @@
         return;
       }
 
-      const huruf = poliKode[poli];
-      const nomor = getNomorAntrian(poli);
-      const kode  = huruf + '-' + String(nomor).padStart(3, '0');
-
-      // Simpan ke sessionStorage untuk dibaca di kartu-antrian.html
-      sessionStorage.setItem('kartu_telepon', telepon);
-      sessionStorage.setItem('kartu_poli',    poli);
-      sessionStorage.setItem('kartu_nomor',   kode);
-
-      // Pindah ke halaman Kartu Antrian
-      window.location.href = 'kartu-antrian.html';
+      document.getElementById('hiddenTelepon').value = telepon;
+      document.getElementById('hiddenPoli').value    = poli;
+      document.getElementById('formAntrian').submit();
     }
   </script>
 
