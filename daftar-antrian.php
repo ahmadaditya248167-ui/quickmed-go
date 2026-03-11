@@ -13,7 +13,6 @@
 <?php
 require 'koneksi.php';
 
-// Ambil nomor antrian terakhir per poli hari ini
 $poliList = [
   ['nama' => 'Poli Umum',            'huruf' => 'A', 'icon' => '🩺', 'id' => 'nomorA'],
   ['nama' => 'Poli Anak',            'huruf' => 'B', 'icon' => '🧸', 'id' => 'nomorB'],
@@ -33,15 +32,11 @@ foreach ($poliList as $p) {
 
 <!-- SIDEBAR -->
 <aside class="sidebar">
+  <!-- 1. LOGO POJOK KIRI ATAS - diganti -->
   <div class="sidebar-logo">
-    <div class="logo-icon">
-      <i class="fa-solid fa-heart-pulse"></i>
-      <i class="fa-solid fa-hands"></i>
-    </div>
-    <div class="logo-text">
-      <span class="logo-klinik">klinik</span>
-      <span class="logo-quickmed">QuickMed</span>
-    </div>
+    <img src="9121dd35-7bd9-4e90-8689-2466e4dd6735-removebg-preview.png"
+         alt="Logo Klinik QuickMed"
+         style="height: 60px; width: auto; object-fit: contain;" />
   </div>
 
   <nav class="sidebar-nav">
@@ -82,7 +77,12 @@ foreach ($poliList as $p) {
   <header class="top-header">
     <div class="hex-overlay"></div>
     <div class="header-logo">
-      <div class="header-icon"><i class="fa-solid fa-circle-plus"></i></div>
+      <!-- 2. LOGO TENGAH ATAS - diganti -->
+      <div class="header-icon" style="background:transparent; box-shadow:none;">
+        <img src="logo (1).png"
+             alt="Logo QuickMed Go"
+             style="height: 56px; width: auto; object-fit: contain;" />
+      </div>
       <span class="header-title">QuickMed Go</span>
     </div>
   </header>
@@ -96,15 +96,11 @@ foreach ($poliList as $p) {
 
       <?php foreach ($poliList as $p): ?>
       <div class="queue-card">
+        <!-- 3. LOGO POJOK KIRI ATAS TIAP KARTU - diganti -->
         <div class="card-logo">
-          <div class="card-logo-icon">
-            <i class="fa-solid fa-heart-pulse"></i>
-            <i class="fa-solid fa-hands"></i>
-          </div>
-          <div class="card-logo-text">
-            <div class="kl">Klinik</div>
-            <div class="qm">Quick<span>Med</span></div>
-          </div>
+          <img src="9121dd35-7bd9-4e90-8689-2466e4dd6735-removebg-preview.png"
+               alt="Logo"
+               style="height: 36px; width: auto; object-fit: contain;" />
         </div>
         <div class="card-label">Nomor Antrian</div>
         <div class="card-number"><?= $nomorAntrian[$p['huruf']] ?></div>

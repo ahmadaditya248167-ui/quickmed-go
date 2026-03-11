@@ -11,7 +11,6 @@
 <body>
 
 <?php
-// Ambil data dari URL
 $telepon = htmlspecialchars($_GET['telepon'] ?? '-');
 $poli    = htmlspecialchars($_GET['poli']    ?? '-');
 $nomor   = htmlspecialchars($_GET['nomor']   ?? '-');
@@ -19,15 +18,11 @@ $nomor   = htmlspecialchars($_GET['nomor']   ?? '-');
 
 <!-- SIDEBAR -->
 <aside class="sidebar">
+  <!-- Logo kiri atas -->
   <div class="sidebar-logo">
-    <div class="logo-icon">
-      <i class="fa-solid fa-heart-pulse"></i>
-      <i class="fa-solid fa-hands"></i>
-    </div>
-    <div class="logo-text">
-      <span class="logo-klinik">klinik</span>
-      <span class="logo-quickmed">QuickMed</span>
-    </div>
+    <img src="9121dd35-7bd9-4e90-8689-2466e4dd6735-removebg-preview.png"
+         alt="Logo Klinik QuickMed"
+         style="height: 60px; width: auto; object-fit: contain;" />
   </div>
 
   <nav class="sidebar-nav">
@@ -37,7 +32,7 @@ $nomor   = htmlspecialchars($_GET['nomor']   ?? '-');
     <a href="daftar-antrian.php" class="nav-item">
       <i class="fa-solid fa-bars"></i> Daftar Antrian
     </a>
-    <a href="#" class="nav-item active">
+    <a href="kartu-antrian.php" class="nav-item active">
       <i class="fa-solid fa-id-card-clip"></i> Kartu Antrian
     </a>
   </nav>
@@ -68,7 +63,12 @@ $nomor   = htmlspecialchars($_GET['nomor']   ?? '-');
   <header class="top-header">
     <div class="hex-overlay"></div>
     <div class="header-logo">
-      <div class="header-icon"><i class="fa-solid fa-circle-plus"></i></div>
+      <!-- Logo tengah atas -->
+      <div class="header-icon" style="background:transparent; box-shadow:none;">
+        <img src="logo (1).png"
+             alt="Logo QuickMed Go"
+             style="height: 56px; width: auto; object-fit: contain;" />
+      </div>
       <span class="header-title">QuickMed Go</span>
     </div>
   </header>
@@ -77,14 +77,13 @@ $nomor   = htmlspecialchars($_GET['nomor']   ?? '-');
     <div class="ticket-wrapper">
       <div class="ticket-card">
 
-        <!-- Header Brand + Close -->
+        <!-- Header kartu: Logo + Tombol X -->
         <div class="ticket-header">
           <div class="ticket-brand">
-            <div class="ticket-brand-icon">
-              <i class="fa-solid fa-heart-pulse"></i>
-              <i class="fa-solid fa-hands"></i>
-            </div>
-            <span class="ticket-brand-text">Klinik Quick<span>Med</span></span>
+            <!-- Logo di pojok kiri atas kartu -->
+            <img src="9121dd35-7bd9-4e90-8689-2466e4dd6735-removebg-preview.png"
+                 alt="Logo"
+                 style="height: 40px; width: auto; object-fit: contain;" />
           </div>
           <button class="btn-close" onclick="window.location.href='index.html'">X</button>
         </div>
