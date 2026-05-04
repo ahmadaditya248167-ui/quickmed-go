@@ -16,9 +16,9 @@ $poli    = htmlspecialchars($_GET['poli']    ?? '-');
 $nomor   = htmlspecialchars($_GET['nomor']   ?? '-');
 ?>
 
-<!-- SIDEBAR -->
+
 <aside class="sidebar">
-  <!-- Logo kiri atas -->
+
   <div class="sidebar-logo">
     <img src="9121dd35-7bd9-4e90-8689-2466e4dd6735-removebg-preview.png"
          alt="Logo Klinik QuickMed"
@@ -58,12 +58,12 @@ $nomor   = htmlspecialchars($_GET['nomor']   ?? '-');
   </div>
 </aside>
 
-<!-- MAIN -->
+
 <div class="main-content">
   <header class="top-header">
     <div class="hex-overlay"></div>
     <div class="header-logo">
-      <!-- Logo tengah atas -->
+      
       <div class="header-icon" style="background:transparent; box-shadow:none;">
         <img src="logo (1).png"
              alt="Logo QuickMed Go"
@@ -77,10 +77,10 @@ $nomor   = htmlspecialchars($_GET['nomor']   ?? '-');
     <div class="ticket-wrapper">
       <div class="ticket-card">
 
-        <!-- Header kartu: Logo + Tombol X -->
+        
         <div class="ticket-header">
           <div class="ticket-brand">
-            <!-- Logo di pojok kiri atas kartu -->
+            
             <img src="9121dd35-7bd9-4e90-8689-2466e4dd6735-removebg-preview.png"
                  alt="Logo"
                  style="height: 40px; width: auto; object-fit: contain;" />
@@ -88,18 +88,18 @@ $nomor   = htmlspecialchars($_GET['nomor']   ?? '-');
           <button class="btn-close" onclick="window.location.href='index.html'">X</button>
         </div>
 
-        <!-- Nomor Telepon -->
+        
         <div class="ticket-phone">
           <span class="ticket-phone-label">Nomor Telepon :</span>
           <span class="ticket-phone-number"><?= $telepon ?></span>
         </div>
 
-        <!-- Nomor Antrian -->
+        
         <div class="ticket-number-box">
           <div class="ticket-number"><?= $nomor ?></div>
         </div>
 
-        <!-- Wave + Poli -->
+        
         <div class="ticket-wave">
           <svg viewBox="0 0 560 30" preserveAspectRatio="none">
             <path d="M0,15 C80,0 160,30 280,15 C400,0 480,28 560,15 L560,30 L0,30 Z" fill="#b8e8f5"/>
@@ -108,7 +108,7 @@ $nomor   = htmlspecialchars($_GET['nomor']   ?? '-');
 
         <div class="ticket-poli"><?= $poli ?></div>
 
-        <!-- Bottom Wave -->
+        
         <div class="ticket-bottom-wave">
           <svg viewBox="0 0 560 28" preserveAspectRatio="none">
             <path d="M0,14 C80,0 160,28 280,14 C400,0 480,26 560,14 L560,0 L0,0 Z" fill="rgba(255,255,255,0.5)"/>
@@ -117,7 +117,7 @@ $nomor   = htmlspecialchars($_GET['nomor']   ?? '-');
 
       </div>
 
-      <!-- Tombol Ambil Antrian Baru -->
+      
       <div class="ticket-action">
         <button class="btn-new-queue" onclick="window.location.href='index.html'">
           AMBIL ANTRIAN BARU
