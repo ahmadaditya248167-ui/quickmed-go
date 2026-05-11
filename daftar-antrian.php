@@ -30,9 +30,9 @@ foreach ($poliList as $p) {
 }
 ?>
 
-<!-- SIDEBAR -->
+
 <aside class="sidebar">
-  <!-- 1. LOGO POJOK KIRI ATAS - diganti -->
+
   <div class="sidebar-logo">
     <img src="9121dd35-7bd9-4e90-8689-2466e4dd6735-removebg-preview.png"
          alt="Logo Klinik QuickMed"
@@ -72,12 +72,12 @@ foreach ($poliList as $p) {
   </div>
 </aside>
 
-<!-- MAIN -->
+
 <div class="main-content">
   <header class="top-header">
     <div class="hex-overlay"></div>
     <div class="header-logo">
-      <!-- 2. LOGO TENGAH ATAS - diganti -->
+
       <div class="header-icon" style="background:transparent; box-shadow:none;">
         <img src="logo (1).png"
              alt="Logo QuickMed Go"
@@ -96,7 +96,7 @@ foreach ($poliList as $p) {
 
       <?php foreach ($poliList as $p): ?>
       <div class="queue-card">
-        <!-- 3. LOGO POJOK KIRI ATAS TIAP KARTU - diganti -->
+
         <div class="card-logo">
           <img src="9121dd35-7bd9-4e90-8689-2466e4dd6735-removebg-preview.png"
                alt="Logo"
