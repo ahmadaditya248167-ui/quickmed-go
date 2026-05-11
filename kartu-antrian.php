@@ -26,7 +26,7 @@ $nomor   = htmlspecialchars($_GET['nomor']   ?? '-');
   </div>
 
   <nav class="sidebar-nav">
-    <a href="index.html" class="nav-item">
+    <a href="index.php" class="nav-item">
       <i class="fa-solid fa-users"></i> Antrian
     </a>
     <a href="daftar-antrian.php" class="nav-item">
@@ -85,7 +85,7 @@ $nomor   = htmlspecialchars($_GET['nomor']   ?? '-');
                  alt="Logo"
                  style="height: 40px; width: auto; object-fit: contain;" />
           </div>
-          <button class="btn-close" onclick="window.location.href='index.html'">X</button>
+          <button class="btn-close" onclick="window.location.href='index.php'">X</button>
         </div>
 
         
@@ -119,7 +119,7 @@ $nomor   = htmlspecialchars($_GET['nomor']   ?? '-');
 
       
       <div class="ticket-action">
-        <button class="btn-new-queue" onclick="window.location.href='index.html'">
+        <button class="btn-new-queue" onclick="window.location.href='index.php'">
           AMBIL ANTRIAN BARU
         </button>
       </div>

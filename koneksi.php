@@ -1,6 +1,6 @@
 <?php
 $host     = 'localhost';
-$dbname   = 'quickmed_go';
+$dbname   = 'admin_antrian';
 $username = 'root';
 $password = '';
 

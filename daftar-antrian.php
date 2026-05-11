@@ -23,10 +23,16 @@ $poliList = [
 
 $nomorAntrian = [];
 foreach ($poliList as $p) {
-    $stmt = $pdo->prepare("SELECT kode_antrian FROM antrian WHERE poli = ? AND DATE(waktu) = CURDATE() ORDER BY id DESC LIMIT 1");
-    $stmt->execute([$p['nama']]);
-    $hasil = $stmt->fetchColumn();
-    $nomorAntrian[$p['huruf']] = $hasil ?: ($p['huruf'] . '-000');
+    $stmt = $pdo->prepare("
+    SELECT CONCAT(s.prefix, '-', LPAD(q.queue_number, 3, '0'))
+    FROM queues q
+    JOIN services s ON q.service_id = s.id
+    WHERE s.name = ? AND DATE(q.created_at) = CURDATE()
+    ORDER BY q.id DESC LIMIT 1
+");
+$stmt->execute([$p['nama']]);
+$hasil = $stmt->fetchColumn();
+$nomorAntrian[$p['huruf']] = $hasil ?: ($p['huruf'] . '-000');
 }
 ?>
 
@@ -40,7 +46,7 @@ foreach ($poliList as $p) {
   </div>
 
   <nav class="sidebar-nav">
-    <a href="index.html" class="nav-item">
+    <a href="index.php" class="nav-item">
       <i class="fa-solid fa-users"></i> Antrian
     </a>
     <a href="daftar-antrian.php" class="nav-item active">
